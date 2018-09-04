@@ -1,0 +1,21 @@
+{
+    "name": "llaski/laravel-preset",
+    "description": "Larry Laski's Laravel Preset",
+    "keywords": ["laravel", "preset"],
+    "license": "MIT",
+    "require": {
+        "laravel/framework": "^5.5|^5.6|^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "BuiltByLarry\\LaravelPreset\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BuiltByLarry\\LaravelPreset\\PresetServiceProvider"
+            ]
+        }
+    }
+}
