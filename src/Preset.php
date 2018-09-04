@@ -17,7 +17,7 @@ class Preset extends BasePreset
         // static::updateWebpackConfiguration();
         // static::updateJavaScript();
         // static::updateTemplates();
-        // static::removeNodeModules();
+        static::removeNodeModules();
         static::updateGitignore();
     }
 
