@@ -1,22 +1,25 @@
-# ⛳️ Larry Laski's Laravel Frontend Preset ⛳️
+# ⛳️ Larry Laski's Laravel Preset ⛳️
 
 A Laravel preset that scaffolds out new applications the way I like 'em 👊
 
-_Inspired by Adam Wathan among other members of the Laravel community_
+_Inspired by Adam Wathan](https://github.com/adamwathan/laravel-preset) among other members of the Laravel community_
 
 What it includes:
 
-Currently Nothing...
-
-What is will include:
 - [Tailwind CSS](https://tailwindcss.com)
 - [postcss-nesting](https://github.com/jonathantneal/postcss-nesting) for nested CSS support
 - [Purgecss](https://www.purgecss.com/), via [spatie/laravel-mix-purgecss](https://github.com/spatie/laravel-mix-purgecss)
 - [Vue.js](https://vuejs.org/)
+- [Moment](https://momentjs.com/)
 - Removes Bootstrap and jQuery
-- Adds compiled assets to `.gitignore`
+- Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
+
+Currently Nothing...
+
+What is will include:
 - Adds a simple Tailwind-tuned default layout template
 - Replaces the `welcome.blade.php` template with one that extends the main layout
+- Adds debugbar
 - And More!
 -
 ## Installation
@@ -44,7 +47,4 @@ Finally, apply the scaffolding by running:
 php artisan preset builtbylarry
 ```
 
-> What's `builtbylarry`? Built By Larry is the name of my consultancy business. Interested? Check my work out at https://larrylaski.com or hit me up at larry.laski@gmail.com
->
-![Alt text](https://raw.githubusercontent.com/llaski/larrylaski/master/public/img/logo/icon.svg)
-<img src="https://raw.githubusercontent.com/llaski/larrylaski/master/public/img/logo/icon.svg">
+> What's `builtbylarry`? Built By Larry is the name of my consultancy business. Interested? Check out my work at https://larrylaski.com or hit me up at larry.laski@gmail.com.
