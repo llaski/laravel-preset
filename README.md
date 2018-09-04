@@ -14,14 +14,18 @@ What it includes:
 - Removes Bootstrap and jQuery
 - Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
 
-Currently Nothing...
-
 What is will include:
 - Adds a simple Tailwind-tuned default layout template
 - Replaces the `welcome.blade.php` template with one that extends the main layout
 - Adds debugbar
-- And More!
--
+- And more to come!
+
+Supports:
+
+- Laravel 5.5
+- Laravel 5.6
+- Laravel 5.7
+
 ## Installation
 
 This package isn't on Packagist (yet), so to get started, add it as a repository to your `composer.json` file:
