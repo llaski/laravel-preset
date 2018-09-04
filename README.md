@@ -2,16 +2,17 @@
 
 A Laravel preset that scaffolds out new applications the way I like 'em 👊
 
-_Inspired by Adam Wathan](https://github.com/adamwathan/laravel-preset) among other members of the Laravel community_
+_Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among other members of the Laravel community_
 
 What it includes:
 
 - [Tailwind CSS](https://tailwindcss.com)
 - [postcss-nesting](https://github.com/jonathantneal/postcss-nesting) for nested CSS support
+- [postcss-import](https://github.com/postcss/postcss-import) for inlining @import rules
 - [Purgecss](https://www.purgecss.com/), via [spatie/laravel-mix-purgecss](https://github.com/spatie/laravel-mix-purgecss)
 - [Vue.js](https://vuejs.org/)
 - [Moment](https://momentjs.com/)
-- Removes Bootstrap and jQuery
+- Removes Bootstrap, jQuery, and Popper.js
 - Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
 
 What is will include:
