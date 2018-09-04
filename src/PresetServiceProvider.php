@@ -9,7 +9,7 @@ class PresetServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        PresetCommand::macro('BuiltByLarry', function ($command) {
+        PresetCommand::macro('builtbylarry', function ($command) {
             Preset::install();
 
             $command->info('BuiltByLarry scaffolding installed successfully.');
