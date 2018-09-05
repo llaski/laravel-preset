@@ -4,7 +4,7 @@ A Laravel preset that scaffolds out new applications the way I like 'em 👊
 
 _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among other members of the Laravel community_
 
-What it includes:
+### What it includes:
 
 - [Tailwind CSS](https://tailwindcss.com)
 - [postcss-nesting](https://github.com/jonathantneal/postcss-nesting) for nested CSS support
@@ -14,18 +14,22 @@ What it includes:
 - [Moment](https://momentjs.com/)
 - Removes Bootstrap, jQuery, and Popper.js
 - Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
+- Replaces the `welcome.blade.php` template with one that extends the main layout and includes a favicon partial
 
-What is will include:
+### What is will include:
 - Adds a simple Tailwind-tuned default layout template
-- Replaces the `welcome.blade.php` template with one that extends the main layout
 - Adds debugbar
 - And more to come!
 
-Supports:
+### Supports:
 
 - Laravel 5.5
 - Laravel 5.6
 - Laravel 5.7
+
+### Resources
+
+- [Favicon Generator](https://realfavicongenerator.net/)
 
 ## Installation
 

@@ -16,7 +16,7 @@ class Preset extends BasePreset
         // static::updateStyles();
         // static::updateWebpackConfiguration();
         // static::updateJavaScript();
-        // static::updateTemplates();
+        static::updateTemplates();
         static::removeNodeModules();
         static::updateGitignore();
     }
@@ -63,14 +63,14 @@ class Preset extends BasePreset
     //     copy(__DIR__.'/stubs/bootstrap.js', resource_path('assets/js/bootstrap.js'));
     // }
 
-    // protected static function updateTemplates()
-    // {
-    //     tap(new Filesystem, function ($files) {
-    //         $files->delete(resource_path('views/home.blade.php'));
-    //         $files->delete(resource_path('views/welcome.blade.php'));
-    //         $files->copyDirectory(__DIR__.'/stubs/views', resource_path('views'));
-    //     });
-    // }
+    protected static function updateTemplates()
+    {
+        tap(new Filesystem, function ($files) {
+            $files->delete(resource_path('views/home.blade.php'));
+            $files->delete(resource_path('views/welcome.blade.php'));
+            $files->copyDirectory(__DIR__.'/stubs/views', resource_path('views'));
+        });
+    }
 
     protected static function updateGitignore()
     {
