@@ -4,7 +4,7 @@ A Laravel preset that scaffolds out new applications the way I like 'em 👊
 
 _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among other members of the Laravel community_
 
-### What it includes:
+### What it includes for the Frontend:
 
 - [Tailwind CSS](https://tailwindcss.com)
 - [postcss-nesting](https://github.com/jonathantneal/postcss-nesting) for nested CSS support
@@ -19,6 +19,13 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 - Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
 - Replaces the `welcome.blade.php` template with one that extends the main layout and includes a favicon partial
 
+### What it includes for the Backend:
+
+- Adds [doctrine/dbal](https://laravel.com/docs/5.7/migrations#modifying-columns) for migrations 
+- Adds [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) for debugging
+- Adds [codedungeon/phpunit-result-printer](https://github.com/mikeerickson/phpunit-pretty-result-printer) for nicer console output when running phpunit tests
+
+ 
 ### What is will include:
 - Adds debugbar
 - And more to come!

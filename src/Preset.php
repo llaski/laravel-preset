@@ -18,6 +18,8 @@ class Preset extends BasePreset
         static::updateTemplates();
         static::removeNodeModules();
         static::updateGitignore();
+
+        static::updateComposerPackages();
     }
 
     protected static function updatePackageArray(array $packages)
@@ -84,4 +86,63 @@ class Preset extends BasePreset
     {
         copy(__DIR__ . '/stubs/gitignore-stub', base_path('.gitignore'));
     }
+
+    /**
+     * Update the "composer.json" file.
+     *
+     * @param  bool  $dev
+     * @return void
+     */
+    protected static function updateComposerPackages()
+    {
+        if (!file_exists(base_path('composer.json'))) {
+            return;
+        }
+
+        $configurationKey = $dev ? 'require-dev' : 'require';
+
+        $packages = json_decode(file_get_contents(base_path('composer.json')), true);
+
+        $packages[$configurationKey] = static::updateComposerPackageArray(
+            array_key_exists('require', $packages) ? $packages['require'] : []
+        );
+
+        ksort($packages['require']);
+
+        file_put_contents(
+            base_path('composer.json'),
+            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL
+        );
+
+        $packages = json_decode(file_get_contents(base_path('composer.json')), true);
+
+        $packages['require-dev'] = static::updateComposerDevPackageArray(
+            array_key_exists('require-dev', $packages) ? $packages['require-dev'] : []
+        );
+
+        ksort($packages['require-dev']);
+
+        file_put_contents(
+            base_path('composer.json'),
+            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL
+        );
+    }
+
+    protected static function updateComposerPackageArray(array $packages)
+    {
+        return array_merge([
+            'doctrine/dbal' => '^2.6',
+        ], Arr::except($packages, [
+        ]));
+    }
+
+    protected static function updateComposerDevPackageArray(array $packages)
+    {
+        return array_merge([
+            'barryvdh/laravel-debugbar' => '^3.1',
+            'codedungeon/phpunit-result-printer' => '~0.14.0',
+        ], Arr::except($packages, [
+        ]));
+    }
+
 }

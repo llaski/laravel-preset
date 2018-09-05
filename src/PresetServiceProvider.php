@@ -13,7 +13,7 @@ class PresetServiceProvider extends ServiceProvider
             Preset::install();
 
             $command->info('BuiltByLarry scaffolding installed successfully.');
-            $command->info('Please run "./node_modules/.bin/tailwind init tailwind.js && npm install && npm run dev" to compile your fresh scaffolding.');
+            $command->info('Please run "npm install && ./node_modules/.bin/tailwind init tailwind.js && npm run dev && composer update" to compile your fresh scaffolding.');
         });
     }
 }
