@@ -21,6 +21,7 @@ class Preset extends BasePreset
 
         static::updateComposerPackages();
         static::updateGithooks();
+        static::updateGitConfig();
     }
 
     protected static function updatePackageArray(array $packages)
@@ -118,8 +119,6 @@ class Preset extends BasePreset
             array_key_exists('scripts', $packages) ? $packages['scripts'] : []
         );
 
-        ksort($packages['scripts']);
-
         file_put_contents(
             base_path('composer.json'),
             json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL
@@ -146,12 +145,11 @@ class Preset extends BasePreset
 
     protected static function updateComposerScriptsArray(array $scripts)
     {
-        return array_merge([
+        return array_merge($scripts, [
             'post-install-cmd' => [
                 "@php artisan env:check",
             ],
-        ], Arr::except($scripts, [
-        ]));
+        ]);
     }
 
     protected static function updateGithooks()
@@ -162,8 +160,26 @@ class Preset extends BasePreset
             }
         });
 
-        copy(__DIR__ . '/stubs/githooks/post-checkout', resource_path('githooks/post-checkout'));
-        copy(__DIR__ . '/stubs/githooks/pre-push', resource_path('githooks/pre-push'));
+        copy(__DIR__ . '/stubs/githooks/post-checkout', base_path('githooks/post-checkout'));
+        copy(__DIR__ . '/stubs/githooks/pre-push', base_path('githooks/pre-push'));
+    }
+
+    protected static function updateGitConfig()
+    {
+        tap(new Filesystem, function ($files) {
+            //Make sure git is setup
+            if (!$files->isFile(base_path('.git/config'))) {
+                return;
+            }
+
+            shell_exec('git config core.hooksPath githooks');
+
+            // $contents = $files->get(base_path('.git/config'));
+
+            // $contents = str_replace("precomposeunicode = true\n", "precomposeunicode = true\n\thooksPath = githooks\n", $contents);
+
+            // $files->put(base_path('.git/config'), $contents, true);
+        });
     }
 
 }
