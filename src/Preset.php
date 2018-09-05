@@ -99,8 +99,6 @@ class Preset extends BasePreset
             return;
         }
 
-        $configurationKey = $dev ? 'require-dev' : 'require';
-
         $packages = json_decode(file_get_contents(base_path('composer.json')), true);
 
         $packages[$configurationKey] = static::updateComposerPackageArray(
