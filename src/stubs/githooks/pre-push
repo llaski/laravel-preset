@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# This git hook makes sure all your .env vars are in .env.example before pushing up.
+# Courtesy of https://tighten.co/blog/dot-env-files-the-silent-killer
+
+php artisan env:check --reverse
+
+exit $?

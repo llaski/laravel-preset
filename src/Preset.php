@@ -20,6 +20,7 @@ class Preset extends BasePreset
         static::updateGitignore();
 
         static::updateComposerPackages();
+        static::updateGithooks();
     }
 
     protected static function updatePackageArray(array $packages)
@@ -107,18 +108,17 @@ class Preset extends BasePreset
 
         ksort($packages['require']);
 
-        file_put_contents(
-            base_path('composer.json'),
-            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL
-        );
-
-        $packages = json_decode(file_get_contents(base_path('composer.json')), true);
-
         $packages['require-dev'] = static::updateComposerDevPackageArray(
             array_key_exists('require-dev', $packages) ? $packages['require-dev'] : []
         );
 
         ksort($packages['require-dev']);
+
+        $packages['scripts'] = static::updateComposerScriptsArray(
+            array_key_exists('scripts', $packages) ? $packages['scripts'] : []
+        );
+
+        ksort($packages['scripts']);
 
         file_put_contents(
             base_path('composer.json'),
@@ -130,6 +130,7 @@ class Preset extends BasePreset
     {
         return array_merge([
             'doctrine/dbal' => '~2.8',
+            'jtant/laravel-env-sync' => '~1.3',
         ], Arr::except($packages, [
         ]));
     }
@@ -141,6 +142,28 @@ class Preset extends BasePreset
             'codedungeon/phpunit-result-printer' => '~0.19',
         ], Arr::except($packages, [
         ]));
+    }
+
+    protected static function updateComposerScriptsArray(array $scripts)
+    {
+        return array_merge([
+            'post-install-cmd' => [
+                "@php artisan env:check",
+            ],
+        ], Arr::except($scripts, [
+        ]));
+    }
+
+    protected static function updateGithooks()
+    {
+        tap(new Filesystem, function ($files) {
+            if (!$files->isDirectory($directory = base_path('githooks'))) {
+                $files->makeDirectory($directory, 0755, true);
+            }
+        });
+
+        copy(__DIR__ . '/stubs/githooks/post-checkout', resource_path('githooks/post-checkout'));
+        copy(__DIR__ . '/stubs/githooks/pre-push', resource_path('githooks/pre-push'));
     }
 
 }
