@@ -13,11 +13,13 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 - [Vue.js](https://vuejs.org/)
 - [Moment](https://momentjs.com/)
 - Removes Bootstrap, jQuery, and Popper.js
+- Adds simple JavaScript setup
+- Adds simple Tailwind configured CSS setup
+- Configuration for Laravel Mix
 - Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
 - Replaces the `welcome.blade.php` template with one that extends the main layout and includes a favicon partial
 
 ### What is will include:
-- Adds a simple Tailwind-tuned default layout template
 - Adds debugbar
 - And more to come!
 
