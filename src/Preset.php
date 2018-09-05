@@ -38,7 +38,7 @@ class Preset extends BasePreset
 
     protected static function updateWebpackConfiguration()
     {
-        copy(__DIR__.'/stubs/webpack.mix.js', base_path('webpack.mix.js'));
+        copy(__DIR__ . '/stubs/webpack.mix.js', base_path('webpack.mix.js'));
     }
 
     protected static function updateStyles()
@@ -57,7 +57,9 @@ class Preset extends BasePreset
 
     protected static function updateJavaScript()
     {
-        $files->delete(public_path('js/app.js'));
+        tap(new Filesystem, function ($files) {
+            $files->delete(public_path('js/app.js'));
+        });
         copy(__DIR__ . '/stubs/resources/assets/js/app.js', resource_path('assets/js/app.js'));
         copy(__DIR__ . '/stubs/resources/assets/js/bootstrap.js', resource_path('assets/js/bootstrap.js'));
     }
