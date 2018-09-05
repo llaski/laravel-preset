@@ -101,7 +101,7 @@ class Preset extends BasePreset
 
         $packages = json_decode(file_get_contents(base_path('composer.json')), true);
 
-        $packages[$configurationKey] = static::updateComposerPackageArray(
+        $packages['require'] = static::updateComposerPackageArray(
             array_key_exists('require', $packages) ? $packages['require'] : []
         );
 
@@ -129,7 +129,7 @@ class Preset extends BasePreset
     protected static function updateComposerPackageArray(array $packages)
     {
         return array_merge([
-            'doctrine/dbal' => '^2.6',
+            'doctrine/dbal' => '~2.8',
         ], Arr::except($packages, [
         ]));
     }
@@ -137,8 +137,8 @@ class Preset extends BasePreset
     protected static function updateComposerDevPackageArray(array $packages)
     {
         return array_merge([
-            'barryvdh/laravel-debugbar' => '^3.1',
-            'codedungeon/phpunit-result-printer' => '~0.14.0',
+            'barryvdh/laravel-debugbar' => '~3.2',
+            'codedungeon/phpunit-result-printer' => '~0.19',
         ], Arr::except($packages, [
         ]));
     }
