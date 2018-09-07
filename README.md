@@ -38,11 +38,13 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 
 ## Installation
 
-This package will add githooks to your setup, so ideally you would have already setup git for this project. If not, you'll have to add the following line manually to the `[core]` section of your `.git/config` file:
+This package will add githooks to your setup, so ideally you would have already setup git for this project. If not, you'll have to run the following command to set the path to your githooks folder:
 
 ```
-hooksPath = githooks
+git config core.hooksPath githooks
 ```
+
+_Also note this command will need to be run for any other developers working on the project._ 
 
 This package isn't on Packagist (yet), so to get started, add it as a repository to your `composer.json` file:
 

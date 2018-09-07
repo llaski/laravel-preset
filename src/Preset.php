@@ -158,10 +158,14 @@ class Preset extends BasePreset
             if (!$files->isDirectory($directory = base_path('githooks'))) {
                 $files->makeDirectory($directory, 0755, true);
             }
+
+            $files->copy(__DIR__ . '/stubs/githooks/post-checkout', base_path('githooks/post-checkout'));
+            $files->copy(__DIR__ . '/stubs/githooks/pre-push', base_path('githooks/pre-push'));
+
+            $files->chmod(base_path('githooks/post-checkout'), 777);
+            $files->chmod(base_path('githooks/pre-push'), 777);
         });
 
-        copy(__DIR__ . '/stubs/githooks/post-checkout', base_path('githooks/post-checkout'));
-        copy(__DIR__ . '/stubs/githooks/pre-push', base_path('githooks/pre-push'));
     }
 
     protected static function updateGitConfig()
@@ -173,12 +177,6 @@ class Preset extends BasePreset
             }
 
             shell_exec('git config core.hooksPath githooks');
-
-            // $contents = $files->get(base_path('.git/config'));
-
-            // $contents = str_replace("precomposeunicode = true\n", "precomposeunicode = true\n\thooksPath = githooks\n", $contents);
-
-            // $files->put(base_path('.git/config'), $contents, true);
         });
     }
 
