@@ -44,14 +44,6 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 
 ## Installation
 
-This package will add githooks to your setup, so ideally you would have already setup git for this project. If not, you'll have to run the following command to set the path to your githooks folder:
-
-```
-git config core.hooksPath githooks
-```
-
-_Also note this command will need to be run for any other developers working on the project._ 
-
 This package isn't on Packagist (yet), so to get started, add it as a repository to your `composer.json` file:
 
 ```json
@@ -75,4 +67,25 @@ Finally, apply the scaffolding by running:
 php artisan preset builtbylarry
 ```
 
-> What's `builtbylarry`? Built By Larry is the name of my consultancy business. Interested? Check out my work at https://larrylaski.com or hit me up at larry.laski@gmail.com.
+Create your tailwind config file
+
+```
+./node_modules/.bin/tailwind init
+```
+
+And of course, run the build process!
+
+```
+npm run dev
+```
+
+
+This package will add githooks to your setup, so ideally you would have already setup git for this project. If not, you'll have to run the following command to set the path to your githooks folder:
+
+```
+git config core.hooksPath githooks
+```
+
+_Also note this command will need to be run for any other developers working on the project._ 
+
+> What's `builtbylarry`? Built By Larry is the name of my freelance business. Interested in learning more, you say? Check out my work at https://larrylaski.com or hit me up at larry.laski@gmail.com.

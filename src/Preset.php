@@ -66,7 +66,7 @@ class Preset extends BasePreset
     protected static function updateJavaScript()
     {
         tap(new Filesystem, function ($files) {
-            $files->delete(public_path('css/app.css'));
+            $files->delete(public_path('js/app.js'));
 
             if (!$files->isDirectory($directory = resource_path('js'))) {
                 $files->makeDirectory($directory, 0755, true);
