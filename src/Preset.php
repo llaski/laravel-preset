@@ -16,6 +16,7 @@ class Preset extends BasePreset
         static::updateWebpackConfiguration();
         static::updateJavaScript();
         static::updateTemplates();
+        static::updateRoutes();
         static::removeNodeModules();
         static::updateGitignore();
 
@@ -84,6 +85,11 @@ class Preset extends BasePreset
             $files->delete(resource_path('views/welcome.blade.php'));
             $files->copyDirectory(__DIR__ . '/stubs/views', resource_path('views'));
         });
+    }
+
+    protected static function updateRoutes()
+    {
+        copy(__DIR__ . '/stubs/routes/web.php', app_path('routes/web.php'));
     }
 
     protected static function updateGitignore()

@@ -17,7 +17,7 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 - Adds simple Tailwind configured CSS setup
 - Configuration for Laravel Mix
 - Adds compiled assets and those pesky `.DS_Store` files to `.gitignore`
-- Replaces the `welcome.blade.php` template with one that extends the main layout and includes a favicon partial
+- Replaces the `welcome.blade.php` template with `home.blade.php` that extends a main layout and includes a favicon partial. Also updates the routes `web.php` file to use the `home` view.
 
 ### What it includes for the Backend:
 
