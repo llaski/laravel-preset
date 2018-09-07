@@ -26,6 +26,11 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 - Adds [codedungeon/phpunit-result-printer](https://github.com/mikeerickson/phpunit-pretty-result-printer) for nicer console output when running phpunit tests
 - Adds [jtant/laravel-env-sync](https://github.com/JulienTant/Laravel-Env-Sync) along with githooks for pre-push and post-checkout to keep your env file in sync. [Credit to the great article by Caleb Porzio](https://tighten.co/blog/dot-env-files-the-silent-killer)
 - Sets up a `Models` folder within your `app` directory and moves the default `User.php` class there (also updates all references from `App\User` to `App\Models\User`)
+- Adds some testing helpers & speed improvements
+    + Adds `assertContains`, `assertNotContains` and `assertEquals` assertion methods for Eloquent Collections
+    + Adds `weh` method - short for `withoutExceptionHandling` directly on `TestCase`
+    + Sets rounds for bcrypt driver to 2 instead of the default of 10 to speed up tests
+- asda
 
 
 ### Supports:

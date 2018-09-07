@@ -25,6 +25,7 @@ class Preset extends BasePreset
         static::updateGitConfig();
 
         static::setUpModelsFolder();
+        static::updateTestSetup();
     }
 
     protected static function updatePackageArray(array $packages)
@@ -89,7 +90,7 @@ class Preset extends BasePreset
 
     protected static function updateRoutes()
     {
-        copy(__DIR__ . '/stubs/routes/web.php', app_path('routes/web.php'));
+        copy(__DIR__ . '/stubs/routes/web.php', base_path('routes/web.php'));
     }
 
     protected static function updateGitignore()
@@ -220,6 +221,15 @@ class Preset extends BasePreset
         });
     }
 
+    public static function updateTestSetup()
+    {
+        copy(__DIR__ . '/stubs/tests/TestCase.php', base_path('tests/TestCase.php'));
+        copy(__DIR__ . '/stubs/tests/CreatesApplication.php', base_path('tests/CreatesApplication.php'));
+    }
+
+    /**************************
+    Private Methods
+     **************************/
     private static function globRecursive($pattern, $flags = 0)
     {
         $files = glob($pattern, $flags);
