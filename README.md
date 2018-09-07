@@ -24,8 +24,8 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
 - Adds [doctrine/dbal](https://laravel.com/docs/5.7/migrations#modifying-columns) for migrations 
 - Adds [barryvdh/laravel-debugbar](https://github.com/barryvdh/laravel-debugbar) for debugging
 - Adds [codedungeon/phpunit-result-printer](https://github.com/mikeerickson/phpunit-pretty-result-printer) for nicer console output when running phpunit tests
-- Adds [jtant/laravel-env-sync](https://github.com/JulienTant/Laravel-Env-Sync) along with githooks on push and checkout to keep your env file in sync. [Credit to the great article by Caleb Porzio](https://tighten.co/blog/dot-env-files-the-silent-killer)
-- Sets up a Models directory within your app directory and moves the default `User.php` class there
+- Adds [jtant/laravel-env-sync](https://github.com/JulienTant/Laravel-Env-Sync) along with githooks for pre-push and post-checkout to keep your env file in sync. [Credit to the great article by Caleb Porzio](https://tighten.co/blog/dot-env-files-the-silent-killer)
+- Sets up a `Models` folder within your `app` directory and moves the default `User.php` class there (also updates all references from `App\User` to `App\Models\User`)
 
 
 ### Supports:
