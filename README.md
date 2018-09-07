@@ -30,7 +30,6 @@ _Inspired by [Adam Wathan](https://github.com/adamwathan/laravel-preset) among o
     + Adds `assertContains`, `assertNotContains` and `assertEquals` assertion methods for Eloquent Collections
     + Adds `weh` method - short for `withoutExceptionHandling` directly on `TestCase`
     + Sets rounds for bcrypt driver to 2 instead of the default of 10 to speed up tests
-- asda
 
 
 ### Supports:
