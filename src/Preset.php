@@ -217,6 +217,13 @@ class Preset extends BasePreset
                     $contents = str_replace('App\User', 'App\Models\User', $contents);
                     $files->put($file, $contents);
                 });
+
+                //Update all references to App\User within your database directory
+                collect(self::globRecursive(database_path('*.php')))->each(function ($file) use ($files) {
+                    $contents = $files->get($file);
+                    $contents = str_replace('App\User', 'App\Models\User', $contents);
+                    $files->put($file, $contents);
+                });
             }
         });
     }
