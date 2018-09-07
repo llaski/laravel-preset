@@ -162,8 +162,8 @@ class Preset extends BasePreset
             $files->copy(__DIR__ . '/stubs/githooks/post-checkout', base_path('githooks/post-checkout'));
             $files->copy(__DIR__ . '/stubs/githooks/pre-push', base_path('githooks/pre-push'));
 
-            $files->chmod(base_path('githooks/post-checkout'), 777);
-            $files->chmod(base_path('githooks/pre-push'), 777);
+            $files->chmod(base_path('githooks/post-checkout'), 0777);
+            $files->chmod(base_path('githooks/pre-push'), 0777);
         });
 
     }
