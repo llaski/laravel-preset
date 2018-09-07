@@ -22,6 +22,8 @@ class Preset extends BasePreset
         static::updateComposerPackages();
         static::updateGithooks();
         static::updateGitConfig();
+
+        static::setUpModelsFolder();
     }
 
     protected static function updatePackageArray(array $packages)
@@ -177,6 +179,19 @@ class Preset extends BasePreset
             }
 
             shell_exec('git config core.hooksPath githooks');
+        });
+    }
+
+    protected static function setUpModelsFolder()
+    {
+        tap(new Filesystem, function ($files) {
+            if (!$files->isDirectory($directory = app_path('models'))) {
+                $files->makeDirectory($directory, 0755, true);
+
+                if (!$files->isFile(app_path('models/User.php')) && $files->isFile($file = app_path('User.php'))) {
+                    $files->move($file, app_path('models/User.php'));
+                }
+            }
         });
     }
 
