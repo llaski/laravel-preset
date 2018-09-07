@@ -185,14 +185,44 @@ class Preset extends BasePreset
     protected static function setUpModelsFolder()
     {
         tap(new Filesystem, function ($files) {
-            if (!$files->isDirectory($directory = app_path('models'))) {
+            if (!$files->isDirectory($directory = app_path('Models'))) {
                 $files->makeDirectory($directory, 0755, true);
 
-                if (!$files->isFile(app_path('models/User.php')) && $files->isFile($file = app_path('User.php'))) {
-                    $files->move($file, app_path('models/User.php'));
-                }
+            }
+
+            if (!$files->isFile(app_path('Models/User.php')) && $files->isFile($file = app_path('User.php'))) {
+                $files->move($file, app_path('Models/User.php'));
+
+                $contents = $files->get(app_path('Models/User.php'));
+                $contents = str_replace('namespace App;', 'namespace App\Models;', $contents);
+                $files->put(app_path('Models/User.php'), $contents);
+
+                //Update all references to App\User within your app directory
+                collect(self::globRecursive(app_path('*.php')))->each(function ($file) use ($files) {
+                    $contents = $files->get($file);
+                    $contents = str_replace('App\User', 'App\Models\User', $contents);
+                    $files->put($file, $contents);
+                });
+
+                //Update all references to App\User within your config directory
+                collect(self::globRecursive(config_path('*.php')))->each(function ($file) use ($files) {
+                    $contents = $files->get($file);
+                    $contents = str_replace('App\User', 'App\Models\User', $contents);
+                    $files->put($file, $contents);
+                });
             }
         });
+    }
+
+    private static function globRecursive($pattern, $flags = 0)
+    {
+        $files = glob($pattern, $flags);
+
+        foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir) {
+            $files = array_merge($files, self::globRecursive($dir . '/' . basename($pattern), $flags));
+        }
+
+        return $files;
     }
 
 }
