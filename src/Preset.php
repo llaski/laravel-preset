@@ -148,6 +148,7 @@ class Preset extends BasePreset
         return array_merge([
             'barryvdh/laravel-debugbar' => '~3.2',
             'codedungeon/phpunit-result-printer' => '~0.19',
+            'sensiolabs/security-checker' => "^4.1",
         ], Arr::except($packages, [
         ]));
     }
@@ -157,6 +158,9 @@ class Preset extends BasePreset
         return array_merge($scripts, [
             'post-install-cmd' => [
                 "@php artisan env:check",
+            ],
+            'check-security' => [
+                "vendor/bin/security-checker security:check",
             ],
         ]);
     }
