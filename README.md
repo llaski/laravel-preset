@@ -68,6 +68,12 @@ Finally, apply the scaffolding by running:
 php artisan preset builtbylarry
 ```
 
+Update your composer packages:
+
+```
+composer update
+```
+
 Create your tailwind config file
 
 ```
