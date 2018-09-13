@@ -1,4 +1,5 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
+const path = require('path')
 require('laravel-mix-purgecss')
 
 mix
@@ -14,6 +15,15 @@ mix
         ]
     })
 
+    .webpackConfig({
+        resolve: {
+            modules: [
+                path.resolve('./resources/js'),
+                'node_modules'
+            ]
+        },
+    })
+    
     .sourceMaps()
 
     .purgeCss()
