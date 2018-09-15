@@ -74,6 +74,12 @@ Update your composer packages:
 composer update
 ```
 
+Update your npm packages:
+
+```
+npm install
+```
+
 Create your tailwind config file
 
 ```
